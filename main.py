@@ -30,6 +30,7 @@ filecount = 0
 subfoldercount = 0
 iserror = 0
 
+
 info("Start scanning folder \""+folderpath+'\"...')
 
 for path, dirs, files in os.walk(folderpath):
@@ -40,24 +41,36 @@ for path, dirs, files in os.walk(folderpath):
             listfile.append(fp)
             filecount += 1
             if filecount % 9 == 0:
-                print(">      Scanning "+str(filecount) + " files", end='\r')
+                print(">      Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 1:
-                print(">>     Scanning "+str(filecount) + " files", end='\r')
+                print(">>     Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 2:
-                print(">>>    Scanning "+str(filecount) + " files", end='\r')
+                print(">>>    Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 3:
-                print(">>>>>  Scanning "+str(filecount) + " files", end='\r')
+                print(">>>>>  Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 4:
-                print(">>>>>> Scanning "+str(filecount) + " files", end='\r')
+                print(">>>>>> Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 5:
-                print(">>>>>  Scanning "+str(filecount) + " files", end='\r')
+                print(">>>>>  Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 6:
-                print(">>>    Scanning "+str(filecount) + " files", end='\r')
+                print(">>>    Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
             if filecount % 9 == 8:
-                print(">>     Scanning "+str(filecount) + " files", end='\r')
+                print(">>     Scanning "+str(filecount) + " files, " +
+                      str(subfoldercount)+' subfolders', end='\r')
         else:
             warning("Something goes wrong with FileIO system")
             error("cannot get File: \"" + fp + '\" size')
+            f = open('errors.log', 'a')
+            f.write("Cannot get File: \"" + fp + '\" size' + '\n')
+            f.write("Reason: FileIO system cannot detect this path is a file\n")
+            f.close()
             info("Skipping file: " + fp)
             iserror += 1
         # listfile.append(fp)
