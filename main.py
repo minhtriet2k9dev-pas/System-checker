@@ -29,7 +29,7 @@ listfile = []
 filecount = 0
 subfoldercount = 0
 iserror = 0
-
+f = open('errors.log', "w")
 
 info("Start scanning folder \""+folderpath+'\"...')
 
