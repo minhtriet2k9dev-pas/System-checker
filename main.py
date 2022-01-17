@@ -93,6 +93,7 @@ def printinfo():
 if iserror:
     warning("There are some errors: " + str(iserror) + " files are skipped")
     warning("The info may not be correct")
+    info("See errors.log file for more...")
     error("Cannot get all info from folder: \"" + folderpath + '\"')
 else:
     success("Successfully get folder info: \"" + folderpath + '\"')
